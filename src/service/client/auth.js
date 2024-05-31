@@ -1,6 +1,5 @@
 export const login = async (form) => {
   try {
-    console.log("login");
     const response = await fetch("/v1/auth/login", {
       method: "POST",
       headers: {

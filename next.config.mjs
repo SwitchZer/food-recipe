@@ -3,8 +3,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/v1/:slug*",
-        destination: "https://pijar-mama-recipe.vercel.app/v1/:slug*",
+        source: "/v1/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_URL}/v1/:path*`,
       },
     ];
   },

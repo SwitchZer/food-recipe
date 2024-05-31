@@ -2,7 +2,7 @@
 import { Button, InputField } from "@/components";
 import Link from "next/link";
 import React, { useState } from "react";
-import { login } from "@/service/auth";
+import { login } from "@/service/client/auth";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
