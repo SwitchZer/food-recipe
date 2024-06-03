@@ -2,28 +2,29 @@
 import { Button, InputField } from "@/components";
 import Link from "next/link";
 import React, { useState } from "react";
-import { login } from "@/service/client/auth";
+import { login } from "@/service/auth";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
   const handleChange = (e) => {
-    setForm((current) => ({
-      ...current,
+    setForm({
+      ...form,
       [e.target.name]: e.target.value,
-    }));
+    });
   };
 
-  const handleSubmit = async (e) => {
+  const handleFormData = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       await login(form);
-      router.push("/");
+      router.push("/home");
     } catch (error) {
       alert(error);
     }
@@ -58,29 +59,29 @@ const Page = () => {
               Log in into your exiting account
             </p>
             <hr className="shrink-0 mt-9 h-px border border-solid bg-neutral-100 border-neutral-100 max-md:max-w-full" />
-            <form>
-              <label htmlFor="email" className="block mt-7">
-                Email
-              </label>
+            <form onSubmit={handleFormData}>
               <InputField
                 name="email"
-                label="Email address"
                 type="email"
-                onChange={handleChange}
+                id="email"
+                label="Email"
                 placeholder="Enter email address"
+                value={form.email}
+                onChange={handleChange}
                 className="border-slate-400 text-slate-400 w-full"
+                required
               />
 
-              <label htmlFor="password" className="block mt-7">
-                Password
-              </label>
               <InputField
                 name="password"
-                label="Create New Password"
                 type="password"
-                onChange={handleChange}
+                id="password"
+                label="Password"
                 placeholder="Create New Password"
+                value={form.password}
+                onChange={handleChange}
                 className="border-slate-400 text-slate-400 w-full"
+                required
               />
 
               <div className="flex gap-3.5 mt-6 max-md:flex-wrap">
@@ -93,7 +94,6 @@ const Page = () => {
                 </label>
               </div>
               <Button
-                onClick={handleSubmit}
                 name="Log In"
                 type="submit"
                 className="justify-center items-center px-16 py-6 mt-10 w-full text-center text-white bg-yellow-400 rounded-md max-md:px-5 max-md:max-w-full"

@@ -36,7 +36,7 @@ const Profile = () => {
 
   const getMyProfileRecipe = async () => {
     try {
-      const response = await fetch(`/v1/recipes/self`, {
+      const response = await fetch(`/v1/recipes/save`, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -80,10 +80,10 @@ const Profile = () => {
         <hr className="shrink-0 self-center mt-1.5 max-w-full h-px border border-solid bg-zinc-100 border-zinc-100 w-[319px]" />
         <nav className="flex gap-5 mt-28 ml-36 max-w-full text-2xl font-medium text-center text-stone-500 w-[607px] max-md:flex-wrap max-md:mt-10">
           <Link href="/profile">
-            <div className="flex-auto text-black underline">My Recipe</div>
+            <div className="flex-auto text-black">My Recipe</div>
           </Link>
           <Link href="/profile/saved-recipe">
-            <div className="flex-auto text-black">Saved Recipe</div>
+            <div className="flex-auto text-black underline">Saved Recipe</div>
           </Link>
           <Link href="/profile/liked-recipe">
             <div className="flex-auto text-black">liked Recipe</div>

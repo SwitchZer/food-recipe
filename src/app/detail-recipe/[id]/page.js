@@ -1,10 +1,12 @@
 "use client";
 
-import { Footer, Navbar } from "@/components";
+import { Button, Footer, Navbar } from "@/components";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 const DetailRecipe = ({ params }) => {
+  const router = useRouter();
   const [recipe, setRecipe] = React.useState(null);
 
   const getRecipesId = () => {
@@ -19,6 +21,10 @@ const DetailRecipe = ({ params }) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleUpdate = () => {
+    router.push(`/profile/update-recipe/${params.id}`);
   };
 
   useEffect(() => {
@@ -41,8 +47,8 @@ const DetailRecipe = ({ params }) => {
           </div>
           <div>
             <img
-              src="/Rectangle 314.png"
-              alt="LoginImg"
+              src={recipe.image}
+              alt={recipe.title}
               className="max-sm:h-[200px]"
             />
           </div>
@@ -57,6 +63,11 @@ const DetailRecipe = ({ params }) => {
                 {recipe.description}
               </li>
             </ul>
+            <Button
+              onClick={handleUpdate}
+              name="Update"
+              className="mt-40 p-2 bg-green-500"
+            ></Button>
           </div>
         </section>
       </main>

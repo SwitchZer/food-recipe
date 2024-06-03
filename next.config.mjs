@@ -3,8 +3,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/v1/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/v1/:path*`,
+        source: "/v1/:slug*",
+        destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/v1/:slug*`,
       },
     ];
   },

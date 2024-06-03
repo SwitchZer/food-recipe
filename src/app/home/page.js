@@ -1,11 +1,11 @@
-import { Footer, ImageCard, NavbarUser } from "@/components";
+import { Footer, ImageCard, Navbar, RecipeCard } from "@/components";
 import { getRecipe } from "@/service/recipe";
 
 const Home = async () => {
   const { data } = await getRecipe();
   return (
     <div className="flex flex-col bg-white">
-      <NavbarUser />
+      <Navbar />
       <div className="flex flex-col mb-9 w-full px-20 max-w-[1675px] max-md:max-w-full">
         <section className="container flex gap-5 mt-24 capitalize max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
           <div className="flex flex-col gap-5 justify-between self-stretch w-full font-medium text-stone-700 max-md:mt-10 max-md:max-w-full">

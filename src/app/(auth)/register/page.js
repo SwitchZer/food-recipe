@@ -1,8 +1,36 @@
+"use client";
 import { Button, InputField } from "@/components";
+import { register } from "@/service/auth";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const Register = () => {
+  const router = useRouter();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      await register(form);
+      router.push("/login");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <section className="flex flex-col gap-5 justify-between h-screen bg-white">
       <article className="flex gap-5 max-md:flex-col max-md:gap-0">
@@ -21,7 +49,6 @@ const Register = () => {
                 alt=""
                 className="w-full aspect-square"
               />
-              {/* <div className="mt-6">{children}</div> */}
             </div>
           </div>
         </aside>
@@ -39,51 +66,57 @@ const Register = () => {
                 Name
               </label>
               <InputField
+                name="name"
                 label="Name"
                 type="text"
                 id="name"
                 placeholder="Name"
+                value={form.name}
+                onChange={handleChange}
                 className="text-zinc-700 w-full"
+                required
               />
               <label htmlFor="email" className="block mt-7">
                 Email address*
               </label>
               <InputField
+                name="email"
                 label="Email address"
                 type="email"
                 id="email"
+                value={form.email}
+                onChange={handleChange}
                 placeholder="Enter email address"
                 className="border-slate-400 text-slate-400 w-full"
+                required
               />
               <label htmlFor="phone" className="block mt-7">
                 Phone Number
               </label>
               <InputField
+                name="phone"
                 label="Phone Number"
                 type="tel"
                 id="phone"
-                placeholder="08xxxxxxxxxx"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="Phone Number"
                 className="border-slate-400 text-slate-400 w-full"
+                required
               />
               <label htmlFor="password" className="block mt-7">
                 Create New Password
               </label>
               <InputField
+                name="password"
                 label="Create New Password"
                 type="password"
                 id="password"
+                value={form.password}
+                onChange={handleChange}
                 placeholder="Create New Password"
                 className="border-slate-400 text-slate-400 w-full"
-              />
-              <label htmlFor="newPassword" className="block mt-7">
-                New Password
-              </label>
-              <InputField
-                label="New Password"
-                type="password"
-                id="newPassword"
-                placeholder="New Password"
-                className="border-slate-400 text-slate-400 w-full"
+                required
               />
               <div className="flex gap-3.5 mt-6 max-md:flex-wrap">
                 <label
@@ -95,6 +128,7 @@ const Register = () => {
                 </label>
               </div>
               <Button
+                onClick={handleSubmit}
                 name="Sign Up"
                 type="submit"
                 className="justify-center items-center px-16 py-6 mt-10 w-full text-center text-white bg-yellow-400 rounded-md max-md:px-5 max-md:max-w-full"
