@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { login } from "@/service/auth";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Page = () => {
   const router = useRouter();
@@ -34,7 +35,11 @@ const Page = () => {
       <article className="flex gap-5 max-md:flex-col max-md:gap-0">
         <aside className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
           <div className="flex overflow-hidden relative flex-col justify-center items-center px-16 py-20 text-lg font-bold text-white min-h-[1587px] max-md:flex max-md:px-5 max-md:max-w-full max-sm:hidden">
-            <img src="/Rectangle 324.png" className="w-full h-full" alt="" />
+            <img
+              src="/Rectangle 324.png"
+              className="size-full absolute"
+              alt=""
+            />
             <img
               src="/Mask Group.png"
               alt=""
@@ -42,10 +47,12 @@ const Page = () => {
             />
 
             <div className="flex absolute flex-col items-center my-auto max-w-full w-[182px] max-md:mt-10">
-              <img
+              <Image
                 src="/Group 697.png"
                 alt=""
                 className="w-full aspect-square"
+                width={100}
+                height={100}
               />
             </div>
           </div>

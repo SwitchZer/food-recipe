@@ -24,6 +24,10 @@ const DetailRecipe = ({ params }) => {
       });
   };
 
+  const handleUpdate = () => {
+    router.push(`/profile/update-recipe/${params.id}`);
+  };
+
   useEffect(() => {
     getRecipesId();
   }, []);
@@ -63,6 +67,11 @@ const DetailRecipe = ({ params }) => {
                 {recipe.description}
               </li>
             </ul>
+            <Button
+              onClick={handleUpdate}
+              name="Update"
+              className="mt-40 p-2 bg-green-500"
+            ></Button>
           </div>
         </section>
       </main>

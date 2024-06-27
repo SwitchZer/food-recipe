@@ -91,28 +91,19 @@ const Profile = () => {
         </nav>
         <hr className="mt-8 w-full border border-solid bg-neutral-200 border-neutral-200 min-h-[1px] max-md:max-w-full" />
         <div className="flex gap-3 px-12 mt-12 mx-36 text-lg w-auto rounded-2xl bg-zinc-100 leading-[90px] text-zinc-400 max-md:flex-wrap max-md:px-5 max-md:mt-10">
-          <label htmlFor="search" className="sr-only">
-            Search
-          </label>
-          <img
-            loading="lazy"
-            src="/Group 687.svg"
-            alt="Search Icon"
-            className="shrink-0 aspect-square w-[18px]"
-          />
           <input
             type="search"
             id="search"
-            className="flex-auto bg-zinc-100 max-md:max-w-full"
+            className="flex-auto h-10 outline-none bg-zinc-100 max-md:max-w-full max-md:max-h-4"
             placeholder="search restaurant, food"
             aria-label="search restaurant, food"
           />
         </div>
-        <div className="grid grid-cols-3 gap-8 max-lg:grid-cols-1">
+        <div className="ml-20 mr-20 p-10 grid grid-cols-3 gap-8 max-lg:grid-cols-1">
           {myRecipe.map((item) => (
             <ImageCard
               key={item.id}
-              src={item.image}
+              src={item.image || "/Rectangle 314.png"}
               text={item.title}
               onClick={() => handleNavigate(item.id)}
             />

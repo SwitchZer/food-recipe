@@ -8,6 +8,13 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    domains: [
+      "res.cloudinary.com",
+      "www.unileverfoodsolutions.co.id",
+      "asset-2.tstatic.net",
+    ],
+  },
 };
 
 export default nextConfig;

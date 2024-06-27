@@ -29,6 +29,6 @@ export const register = async (form) => {
     return result;
   } catch (error) {
     console.log(error);
-    return Promise.reject("ada error");
+    return Promise.reject("Error");
   }
 };

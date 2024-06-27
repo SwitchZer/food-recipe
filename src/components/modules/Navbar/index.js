@@ -1,38 +1,38 @@
 "use client";
 import { Button } from "@/components/base";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const router = useRouter();
+  const router = useRouter();
   const handleLogout = async () => {
-    const logout = async () => {
-      try {
-        const response = await fetch(`/v1/auth/logout`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
+    try {
+      const response = await fetch("/v1/auth/logout", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
 
-        if (!response.ok) {
-          throw new Error("Logout failed");
-        }
-
-        const result = await response.json();
-
-        return result;
-      } catch (err) {
-        return Promise.reject(err.message);
+      if (!response.ok) {
+        const error = await response.json();
+        console.log(error);
+        throw new Error(error.message);
       }
-    };
+      const res = await response.json()
+      console.log(res);
+      localStorage.removeItem("user");
+      // await router.push("/login");
 
-    const result = await logout();
-    setIsLoggedIn(false);
+      toast.success("You have been logged out successfully!");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
-
   return (
     <header className="flex justify-center items-center px-16 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
       <nav className="flex flex-col mb-9 w-full max-w-[1675px] max-md:max-w-full">

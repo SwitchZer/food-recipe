@@ -119,7 +119,11 @@ const Home = async () => {
 
           <div className="grid grid-cols-3 gap-5  mb-32">
             {data.map((item) => (
-              <ImageCard key={item.id} src={item.image} text={item.title} />
+              <ImageCard
+                key={item.id}
+                src={item.image || "/Rectangle 314.png"}
+                text={item.title}
+              />
             ))}
           </div>
         </section>

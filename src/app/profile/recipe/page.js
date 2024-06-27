@@ -124,7 +124,7 @@ const Recipes = () => {
           <input
             type="search"
             id="search"
-            className="flex-auto bg-zinc-100 max-md:max-w-full"
+            className="flex-auto p-2 bg-zinc-100 max-md:max-w-full"
             placeholder="Search Recipe"
             onChange={handleSearchInputChange}
           />
@@ -150,8 +150,8 @@ const Recipes = () => {
             <option value={"asc"}>Ascending</option>
             <option value={"desc"}>Descending</option>
           </select>
-          <Button name="Search" className="p-2" onClick={handleSearch}></Button>
         </div>
+        <Button name="Search" className="p-2" onClick={handleSearch}></Button>
         <div className="grid grid-cols-3 max-lg:grid-cols-1">
           {recipe.map((item) => (
             <ImageCard

@@ -1,6 +1,7 @@
 "use client";
 import { Button, Footer, InputField, Navbar } from "@/components";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UpdateRecipe = ({ params }) => {
@@ -10,6 +11,7 @@ const UpdateRecipe = ({ params }) => {
     title: "",
     description: "",
   });
+  const router = useRouter();
 
   const handleChange = (e) => {
     setForm({
@@ -21,20 +23,17 @@ const UpdateRecipe = ({ params }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API}/v1/recipes/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        }
-      );
+      const response = await fetch(`/v1/recipes/${params.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
       const res = await response.json();
 
-      // router.push(`/recipes/${res.data.id}`);
+      router.push(`/profile`);
     } catch (err) {
       console.error(err);
     }
@@ -43,9 +42,8 @@ const UpdateRecipe = ({ params }) => {
   const handleDelete = async () => {
     try {
       if (params.id) {
-        await axios.delete(
-          `https://pijar-mama-recipe.vercel.app/v1/recipes/${params.id}`
-        );
+        await axios.delete(`/v1/recipes/${params.id}`);
+        router.push("/profile");
       } else {
         throw new Error("Recipe ID not found!");
       }
@@ -56,15 +54,12 @@ const UpdateRecipe = ({ params }) => {
 
   const getRecipe = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API}/v1/recipes/${id}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`/v1/recipes/${params.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const res = await response.json();
       setForm(res.data);
@@ -73,9 +68,32 @@ const UpdateRecipe = ({ params }) => {
       new Error(err.message);
     }
   };
+
+  const handleAddImage = async (e) => {
+    try {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch(`/v1/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const res = await response.json();
+
+      const { file_url } = res.data;
+      console.log(file_url);
+      setForm({ ...form, image: file_url });
+      console.log(form.image);
+    } catch (err) {
+      new Error(err.message);
+    }
+  };
+
   useEffect(() => {
     getRecipe();
-  }, []);
+  }, [params.id]);
   return (
     <div>
       <Navbar />
@@ -84,13 +102,13 @@ const UpdateRecipe = ({ params }) => {
           <p className="font-medium text-xl text-[#3F3A3A]">
             Edit {recipe.title}
           </p>
-          {/* <InputField
+          <InputField
             id="file-upload"
             label="Upload Image"
             type="file"
-            onChange={handleChange}
+            onChange={handleAddImage}
             className="flex justify-center items-center px-16 pt-72 pb-40 w-full bg-[#F6F5F4] max-md:px-5 max-md:py-10 max-md:max-w-full"
-          /> */}
+          />
           <InputField
             id="title"
             name="title"
@@ -117,9 +135,7 @@ const UpdateRecipe = ({ params }) => {
             onClick={handleSubmit}
             className="flex justify-center items-center self-center px-16 py-7 mt-24 max-w-full text-base text-white whitespace-nowrap bg-yellow-400 rounded-md w-[426px] max-md:px-5 max-md:mt-10"
             type="submit"
-          >
-            Post
-          </Button>
+          />
           <Button
             name="Delete"
             onClick={handleDelete}

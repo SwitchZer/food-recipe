@@ -9,7 +9,7 @@ export const getRecipe = async () => {
       }
     );
     if (!response.ok) {
-      throw new Error("terjad error");
+      throw new Error("Error");
     }
     const result = await response.json();
     return result;
