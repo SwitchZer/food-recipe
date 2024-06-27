@@ -142,7 +142,7 @@ const Register = () => {
                 Register Account
               </Button>
             </form>
-            <p class="self-center mt-7 text-sm max-md:max-w-full">
+            <p className="self-center mt-7 text-sm max-md:max-w-full">
               Already Have Account?{" "}
               <Link href="/login" className="text-yellow-500">
                 Log in Here

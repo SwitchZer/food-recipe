@@ -106,7 +106,7 @@ const Page = () => {
                 className="justify-center items-center px-16 py-6 mt-10 w-full text-center text-white bg-yellow-400 rounded-md max-md:px-5 max-md:max-w-full"
               />
             </form>
-            <p class="self-center mt-7 text-sm max-md:max-w-full">
+            <p className="self-center mt-7 text-sm max-md:max-w-full">
               Don’t have an account?{" "}
               <Link href="/register" className="text-yellow-500">
                 Sign Up
