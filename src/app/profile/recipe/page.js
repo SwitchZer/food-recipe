@@ -161,7 +161,7 @@ const Recipes = () => {
           {recipe.map((item) => (
             <ImageCard
               key={item.id}
-              src={item.image}
+              src={item.image || "/Rectangle 314.png"}
               text={item.title}
               onClick={() => handleNavigate(item.id)}
             />
