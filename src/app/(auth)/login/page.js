@@ -23,6 +23,12 @@ const Page = () => {
 
   const handleFormData = async (e) => {
     e.preventDefault();
+
+    if (!form.email || !form.password) {
+      alert("Please fill in all the required fields.");
+      return;
+    }
+
     try {
       await login(form);
       router.push("/home");
@@ -76,7 +82,6 @@ const Page = () => {
                 value={form.email}
                 onChange={handleChange}
                 className="border-slate-400 text-slate-400 w-full"
-                required
               />
 
               <InputField
@@ -88,7 +93,6 @@ const Page = () => {
                 value={form.password}
                 onChange={handleChange}
                 className="border-slate-400 text-slate-400 w-full"
-                required
               />
 
               <div className="flex gap-3.5 mt-6 max-md:flex-wrap">

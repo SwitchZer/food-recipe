@@ -148,8 +148,8 @@ const Recipes = () => {
             <option value={""} selected>
               Sort By
             </option>
-            <option value={"asc"}>Ascending</option>
-            <option value={"desc"}>Descending</option>
+            <option value={"asc"}>Asc</option>
+            <option value={"desc"}>Desc</option>
           </select>
           <Button
             name="Search"

@@ -24,6 +24,10 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     try {
+      if (!form.email || !form.password) {
+        alert("Please fill in all the required fields.");
+        return;
+      }
       e.preventDefault();
       await register(form);
       toast.success("Registration successful! Redirecting to login...");
