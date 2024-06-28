@@ -23,10 +23,10 @@ const Navbar = () => {
         console.log(error);
         throw new Error(error.message);
       }
-      const res = await response.json()
+      const res = await response.json();
       console.log(res);
       localStorage.removeItem("user");
-      // await router.push("/login");
+      await router.push("/login");
 
       toast.success("You have been logged out successfully!");
     } catch (error) {
