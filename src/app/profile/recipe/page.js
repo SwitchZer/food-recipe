@@ -36,7 +36,7 @@ const Recipes = () => {
       const response = await fetch(
         `${
           process.env.NEXT_PUBLIC_API_BASE_URL
-        }v1/recipes?${queryParams.toString()}`,
+        }/v1/recipes?${queryParams.toString()}`,
         {
           method: "GET",
           headers: {
