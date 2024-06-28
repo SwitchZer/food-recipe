@@ -3,11 +3,11 @@ import { Button, InputField } from "@/components";
 import Link from "next/link";
 import React, { useState } from "react";
 import { login } from "@/service/auth";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Page = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const [form, setForm] = useState({
     email: "",
@@ -31,7 +31,7 @@ const Page = () => {
 
     try {
       await login(form);
-      router.push("/home");
+      // router.push("/home");
     } catch (error) {
       alert(error);
     }
