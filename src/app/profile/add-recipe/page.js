@@ -2,6 +2,7 @@
 import { Button, Footer, InputField, Navbar } from "@/components";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddRecipe = () => {
   const router = useRouter();
@@ -20,17 +21,6 @@ const AddRecipe = () => {
 
   const handleSubmit = async () => {
     try {
-      // Validate form data
-      if (
-        !form.title ||
-        !form.description ||
-        !form.ingredients ||
-        !form.instructions
-      ) {
-        toast.error("Please fill in all required fields");
-        return;
-      }
-
       const response = await fetch(`/v1/recipes/`, {
         method: "POST",
         headers: {
@@ -45,7 +35,6 @@ const AddRecipe = () => {
       }
 
       const res = await response.json();
-      toast.success("Recipe created successfully!");
       router.push(`/profile`);
     } catch (err) {
       toast.error(err.message);

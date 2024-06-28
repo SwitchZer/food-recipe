@@ -1,5 +1,6 @@
 import { Footer, ImageCard, Navbar, RecipeCard } from "@/components";
 import { getRecipe } from "@/service/recipe";
+import Image from "next/image";
 
 const Home = async () => {
   const { data } = await getRecipe();
@@ -14,15 +15,17 @@ const Home = async () => {
                 <h1 className="text-7xl font-medium text-indigo-900 leading-[90px] max-md:max-w-full max-md:text-4xl max-md:leading-[55px]">
                   Discover Recipe <br />& Delicious Food
                 </h1>
-                <div className="flex gap-3 px-12 py-9 mt-12 text-lg w-auto rounded-2xl bg-zinc-100 leading-[90px] text-zinc-400 max-md:flex-wrap max-md:px-5 max-md:mt-10">
+                <div className="flex gap-3 px-12 mb-4 mt-12 text-lg w-auto rounded-2xl bg-zinc-100 leading-[90px] text-zinc-400 max-md:flex-wrap max-md:px-5 max-md:mt-10">
                   <label htmlFor="search" className="sr-only">
                     Search
                   </label>
-                  <img
+                  <Image
                     loading="lazy"
                     src="/Group 687.svg"
                     alt="Search Icon"
                     className="shrink-0 aspect-square w-[18px]"
+                    width={100}
+                    height={100}
                   />
                   <input
                     type="search"

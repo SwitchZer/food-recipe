@@ -5,6 +5,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const DetailRecipe = ({ params }) => {
   const router = useRouter();
@@ -22,6 +23,56 @@ const DetailRecipe = ({ params }) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const likeRecipe = async () => {
+    try {
+      const response = await fetch(`/v1/recipes/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ recipe_id: `${params.id}` }),
+        credentials: "include",
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      if (response.ok) {
+        toast.success("Recipe liked!");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
+  };
+
+  const saveRecipe = async () => {
+    try {
+      const response = await fetch(`/v1/recipes/save`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ recipe_id: `${params.id}` }),
+        credentials: "include",
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      if (response.ok) {
+        toast.success("Recipe saved!");
+      } else {
+        toast.error(result.message);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message);
+    }
   };
 
   useEffect(() => {
@@ -63,6 +114,16 @@ const DetailRecipe = ({ params }) => {
                 {recipe.description}
               </li>
             </ul>
+            <Button
+              onClick={likeRecipe}
+              name="Like Recipe"
+              className="mt-40 p-2 bg-green-500"
+            />
+            <Button
+              onClick={saveRecipe}
+              name="Save Recipe"
+              className="mt-40 p-2 bg-yellow-500"
+            />
           </div>
         </section>
       </main>

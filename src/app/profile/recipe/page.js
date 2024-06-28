@@ -33,16 +33,17 @@ const Recipes = () => {
         sortBy: params.sortBy,
       });
 
-      const url = `${
-        process.env.NEXT_PUBLIC_API_BASE_URL
-      }v1/recipes?${queryParams.toString()}`;
-
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${
+          process.env.NEXT_PUBLIC_API_BASE_URL
+        }v1/recipes?${queryParams.toString()}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         // throw new Error('Login failed');
@@ -115,21 +116,21 @@ const Recipes = () => {
     <>
       <Navbar />
       <div className="flex flex-col gap-16 p-24 pb-4 pt-4 max-lg:p-4 max-lg:pt-32 max-lg:gap-6">
-        <div className="flex gap-6 items-center">
+        <div className="flex gap-6 mx-5 items-center">
           <p className="font-medium text-6xl text-[#3F3A3A] max-lg:text-3xl">
             Recipe
           </p>
         </div>
-        <div className="join flex">
+        <div className="join flex mx-5">
           <input
             type="search"
             id="search"
-            className="flex-auto p-2 bg-zinc-100 max-md:max-w-full"
+            className="flex-auto p-2 outline-none bg-zinc-100 max-md:max-w-full"
             placeholder="Search Recipe"
             onChange={handleSearchInputChange}
           />
           <select
-            className="select select-bordered join-item"
+            className="select select-bordered bg-zinc-100 join-item"
             value={selectedSort}
             onChange={handleSortChange}
           >
@@ -140,7 +141,7 @@ const Recipes = () => {
             <option value={"created_at"}>Created At</option>
           </select>
           <select
-            className="select select-bordered join-item"
+            className="select select-bordered bg-zinc-100 join-item mr-2"
             value={selectedSortBy}
             onChange={handleSortByChange}
           >
@@ -150,8 +151,12 @@ const Recipes = () => {
             <option value={"asc"}>Ascending</option>
             <option value={"desc"}>Descending</option>
           </select>
+          <Button
+            name="Search"
+            className="p-2 rounded-sm"
+            onClick={handleSearch}
+          />
         </div>
-        <Button name="Search" className="p-2" onClick={handleSearch}></Button>
         <div className="grid grid-cols-3 max-lg:grid-cols-1">
           {recipe.map((item) => (
             <ImageCard

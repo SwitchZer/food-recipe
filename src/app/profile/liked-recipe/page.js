@@ -1,5 +1,5 @@
 "use client";
-import { Footer, ImageCard, NavItem, Navbar } from "@/components";
+import { Button, Footer, ImageCard, NavItem, Navbar } from "@/components";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // import { getProfile } from "@/service/client/profile";
@@ -54,8 +54,26 @@ const Profile = () => {
     }
   };
 
+  const cancelLikedRecipe = async (id) => {
+    try {
+      const response = await fetch(`/v1/recipes/like/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error("Cancel like recipe failed");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleNavigate = (id) => {
-    router.push(`/detail-recipe/${id}`);
+    router.push(`/profile/liked-recipe/${id}`);
   };
 
   useEffect(() => {
@@ -101,12 +119,18 @@ const Profile = () => {
         </div>
         <div className="ml-20 mr-20 p-10 grid grid-cols-3 gap-8 max-lg:grid-cols-1">
           {myRecipe.map((item) => (
-            <ImageCard
-              key={item.id}
-              src={item.image || "/Rectangle 314.png"}
-              text={item.title}
-              onClick={() => handleNavigate(item.id)}
-            />
+            <div key={item.recipe.id}>
+              <ImageCard
+                src={item.recipe.image || "/Rectangle 314.png"}
+                text={item.recipe.title}
+                onClick={() => handleNavigate(item.recipe.id)}
+              />
+              <Button
+                name="Delete Saved"
+                className="flex p-1 ml-6 bg-red-500"
+                onClick={() => cancelLikedRecipe(item.id)}
+              />
+            </div>
           ))}
         </div>
       </section>

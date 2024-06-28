@@ -13,6 +13,8 @@ const nextConfig = {
       "res.cloudinary.com",
       "www.unileverfoodsolutions.co.id",
       "asset-2.tstatic.net",
+      "statics.indozone.news",
+      "indonesiakaya.com",
     ],
   },
 };

@@ -1,5 +1,5 @@
 "use client";
-import { Footer, ImageCard, NavItem, Navbar } from "@/components";
+import { Button, Footer, ImageCard, NavItem, Navbar } from "@/components";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // import { getProfile } from "@/service/client/profile";
@@ -9,10 +9,17 @@ import React, { useEffect, useState } from "react";
 const Profile = () => {
   const router = useRouter();
   const [myRecipe, setMyRecipe] = useState([]);
-  // const [params, setParams] = useState({
-  //   limit: 80,
-  //   page: 1,
-  // })
+  const [params, setParams] = useState({
+    limit: 3,
+    page: 1,
+    search: "",
+    sort: "created_at",
+    sortBy: "desc",
+  });
+
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedSort, setSelectedSort] = useState("");
+  const [selectedSortBy, setSelectedSortBy] = useState("");
 
   const [profile, setProfile] = useState({});
   const getMyProfile = async () => {
@@ -36,14 +43,25 @@ const Profile = () => {
 
   const getMyProfileRecipe = async () => {
     try {
-      const response = await fetch(`/v1/recipes/self`, {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        cache: "no-cache",
+      const queryParams = new URLSearchParams({
+        limit: params.limit,
+        page: params.page,
+        ...(params.search ? { search: params.search } : {}),
+        ...(params.sort ? { sort: params.sort } : {}),
+        sortBy: params.sortBy,
       });
+
+      const response = await fetch(
+        `/v1/recipes/self?${queryParams.toString()}`,
+        {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          cache: "no-cache",
+        }
+      );
       if (!response.ok) {
         throw new Error("Error");
       }
@@ -61,7 +79,50 @@ const Profile = () => {
   useEffect(() => {
     getMyProfile();
     getMyProfileRecipe();
-  }, []);
+  }, [params]);
+
+  const handlePrevious = () => {
+    setParams({
+      ...params,
+      page: params.page - 1,
+    });
+  };
+  const handleNext = () => {
+    setParams({
+      ...params,
+      page: params.page + 1,
+    });
+  };
+
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (searchInput === "") {
+      setParams({ ...params, search: null });
+    } else {
+      setParams({
+        ...params,
+        search: searchInput,
+        sort: selectedSort,
+        sortBy: selectedSortBy,
+      });
+    }
+  };
+
+  const handleSortChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedSort(selectedValue);
+    // setParams({ ...params, sort: selectedValue });
+  };
+
+  const handleSortByChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedSortBy(selectedValue);
+    // setParams({ ...params, sort: selectedValue });
+  };
+
   return (
     <div className="flex flex-col bg-white">
       <Navbar />
@@ -90,15 +151,42 @@ const Profile = () => {
           </Link>
         </nav>
         <hr className="mt-8 w-full border border-solid bg-neutral-200 border-neutral-200 min-h-[1px] max-md:max-w-full" />
-        <div className="flex gap-3 px-12 mt-12 mx-36 text-lg w-auto rounded-2xl bg-zinc-100 leading-[90px] text-zinc-400 max-md:flex-wrap max-md:px-5 max-md:mt-10">
+        {/* <div className="join flex mx-32 mt-10">
           <input
             type="search"
             id="search"
-            className="flex-auto h-10 outline-none bg-zinc-100 max-md:max-w-full max-md:max-h-4"
-            placeholder="search restaurant, food"
-            aria-label="search restaurant, food"
+            className="flex-auto p-2 outline-none bg-zinc-100 max-md:max-w-full"
+            placeholder="Search Recipe"
+            onChange={handleSearchInputChange}
           />
-        </div>
+          <select
+            className="select select-bordered bg-zinc-100 join-item"
+            value={selectedSort}
+            onChange={handleSortChange}
+          >
+            <option value={""} selected>
+              Sort
+            </option>
+            <option value={"title"}>Title</option>
+            <option value={"created_at"}>Created At</option>
+          </select>
+          <select
+            className="select select-bordered bg-zinc-100 join-item mr-2"
+            value={selectedSortBy}
+            onChange={handleSortByChange}
+          >
+            <option value={""} selected>
+              Sort By
+            </option>
+            <option value={"asc"}>Ascending</option>
+            <option value={"desc"}>Descending</option>
+          </select>
+          <Button
+            name="Search"
+            className="p-2 rounded-sm"
+            onClick={handleSearch}
+          />
+        </div> */}
         <div className="ml-20 mr-20 p-10 grid grid-cols-3 gap-8 max-lg:grid-cols-1">
           {myRecipe.map((item) => (
             <ImageCard
@@ -109,6 +197,26 @@ const Profile = () => {
             />
           ))}
         </div>
+        {/* <div className="flex flex-col items-center">
+          <div className="join">
+            <Button
+              className="join-item px-1 btn"
+              name="<-"
+              onClick={handlePrevious}
+            ></Button>
+            <Button
+              className="join-item m-2 px-2 btn"
+              name={params.page}
+            ></Button>
+            <Button
+              className="join-item px-1 btn"
+              name="->"
+              onClick={handleNext}
+            >
+              »
+            </Button>
+          </div>
+        </div> */}
       </section>
       <Footer />
     </div>
