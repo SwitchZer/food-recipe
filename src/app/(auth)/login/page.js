@@ -32,6 +32,7 @@ const Page = () => {
     try {
       await login(form);
       // router.push("/home");
+      console.log(form);
     } catch (error) {
       alert(error);
     }
