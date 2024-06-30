@@ -28,9 +28,9 @@ const Navbar = () => {
       localStorage.removeItem("user");
       await router.push("/login");
 
-      toast.success("You have been logged out successfully!");
+      alert("You have been logged out successfully!");
     } catch (error) {
-      toast.error(error.message);
+      alert(error.message);
     }
   };
   return (

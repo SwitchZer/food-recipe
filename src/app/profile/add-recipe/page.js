@@ -37,7 +37,7 @@ const AddRecipe = () => {
       const res = await response.json();
       router.push(`/profile`);
     } catch (err) {
-      toast.error(err.message);
+      alert(err.message);
     }
   };
 

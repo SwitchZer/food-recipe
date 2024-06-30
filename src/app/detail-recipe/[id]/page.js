@@ -40,13 +40,13 @@ const DetailRecipe = ({ params }) => {
       console.log(result);
 
       if (response.ok) {
-        toast.success("Recipe liked!");
+        alert("Recipe liked!");
       } else {
-        toast.error(result.message);
+        alert(result.message);
       }
     } catch (err) {
       console.log(err);
-      toast.error(err.message);
+      alert(err.message);
     }
   };
 
@@ -65,13 +65,13 @@ const DetailRecipe = ({ params }) => {
       console.log(result);
 
       if (response.ok) {
-        toast.success("Recipe saved!");
+        alert("Recipe saved!");
       } else {
-        toast.error(result.message);
+        alert(result.message);
       }
     } catch (err) {
       console.log(err);
-      toast.error(err.message);
+      alert(err.message);
     }
   };
 

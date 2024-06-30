@@ -30,7 +30,7 @@ const Register = () => {
       }
       e.preventDefault();
       await register(form);
-      toast.success("Registration successful! Redirecting to login...");
+      alert("Registration successful! Redirecting to login...");
       router.push("/login");
     } catch (error) {
       alert(error);
