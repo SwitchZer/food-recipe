@@ -118,3 +118,5 @@ Project Related to this Project.
 [Peworld Backend](https://github.com/SwitchZer/hire-job-backend)
 
 [Peworld Mobile](https://github.com/SwitchZer/PeWorld-Mobile)
+
+[Blanja Web](https://github.com/SwitchZer/blanja-fe/tree/main)
