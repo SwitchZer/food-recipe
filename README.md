@@ -1,8 +1,6 @@
-
 # Mama Recipe
 
 Blanja is an online shop platform that facilitates buying and selling activities between users acting as shops and users acting as customers. On this platform, users acting as shops can sell their goods, while users acting as customers can search for and purchase available items.
-
 
 ## Tech Stack
 
@@ -32,7 +30,6 @@ Blanja is an online shop platform that facilitates buying and selling activities
 
 🔥Update Profile
 
-
 ## Installation
 
 #### Clone this repository
@@ -52,9 +49,72 @@ Blanja is an online shop platform that facilitates buying and selling activities
 ```bash
    npm run dev
 ```
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
 `NEXT_PUBLIC_API_BASE_URL`
 
+## Screenshots
+
+<table>
+   <tr>
+      <td>Landing Page</td>
+      <td>Detail Recipe</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/LandingPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/DetailRecipePage.png" border="0" alt="" /></td>
+   </tr>
+   <tr>
+      <td>Login Page</td>
+      <td>Register Recipe</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/LoginPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/RegisterPage.png" border="0" alt="" /></td>
+   </tr>
+   <tr>
+      <td>Add Recipe</td>
+      <td>Search Recipe</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/AddRecipePage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/RecipePage.png" border="0" alt="" /></td>
+   </tr>
+    <tr>
+      <td>Liked Recipe</td>
+      <td>Saved Recipe</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/LikeRecipe.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/SaveRecipe.png" border="0" alt="" /></td>
+   </tr>
+   <tr>
+      <td>Profile</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/ProfilePage.png" border="0" alt="" /></td>
+   </tr>
+</table>
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+Feel Free to Contact me using [alfredcnzagoto@gmail.com](alfredcnzagoto@gmail.com).
+
+## Contributing
+
+Contributions are always welcome!
+
+## Related Project
+
+Project Related to this Project.
+
+[Peworld Backend](https://github.com/SwitchZer/hire-job-backend)
+
+[Peworld Mobile](https://github.com/SwitchZer/PeWorld-Mobile)
