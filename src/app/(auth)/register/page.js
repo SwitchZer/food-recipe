@@ -72,9 +72,6 @@ const Register = () => {
             </p>
             <hr className="shrink-0 mt-9 h-px border border-solid bg-neutral-100 border-neutral-100 max-md:max-w-full" />
             <form>
-              <label htmlFor="name" className="block mt-7">
-                Name
-              </label>
               <InputField
                 name="name"
                 label="Name"
@@ -86,9 +83,6 @@ const Register = () => {
                 className="text-zinc-700 w-full"
                 required
               />
-              <label htmlFor="email" className="block mt-7">
-                Email address*
-              </label>
               <InputField
                 name="email"
                 label="Email address"
@@ -100,9 +94,6 @@ const Register = () => {
                 className="border-slate-400 text-slate-400 w-full"
                 required
               />
-              <label htmlFor="phone" className="block mt-7">
-                Phone Number
-              </label>
               <InputField
                 name="phone"
                 label="Phone Number"
@@ -114,9 +105,6 @@ const Register = () => {
                 className="border-slate-400 text-slate-400 w-full"
                 required
               />
-              <label htmlFor="password" className="block mt-7">
-                Create New Password
-              </label>
               <InputField
                 name="password"
                 label="Create New Password"

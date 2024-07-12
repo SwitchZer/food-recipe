@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 
 const UpdateRecipe = ({ params }) => {
   const [recipe, setRecipe] = useState({});
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     image: "",
     title: "",
@@ -102,13 +103,29 @@ const UpdateRecipe = ({ params }) => {
           <p className="font-medium text-xl text-[#3F3A3A]">
             Edit {recipe.title}
           </p>
-          <InputField
-            id="file-upload"
-            label="Upload Image"
-            type="file"
-            onChange={handleAddImage}
-            className="flex justify-center items-center px-16 pt-72 pb-40 w-full bg-[#F6F5F4] max-md:px-5 max-md:py-10 max-md:max-w-full"
-          />
+          <label
+            className="bg-no-repeat w-full h-80 cursor-pointer p-20 bg-[#F6F5F4] rounded-lg border border-stone-300"
+            style={{
+              backgroundImage: `url('${form.image || ""}')`,
+            }}
+          >
+            <input className="hidden" type="file" onChange={handleAddImage} />
+            {loading ? (
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <span className="loading loading-spinner text-black"></span>
+                <p className="font-medium text-sm text-black">Loading</p>
+              </div>
+            ) : form.image ? (
+              <div className="hidden"></div>
+            ) : (
+              <div className={`w-full flex flex-col gap-6 items-center`}>
+                {/* <img src="/add-photo.svg" /> */}
+                <p className="font-medium text-lg text-[#666666] text-center">
+                  Add Photo
+                </p>
+              </div>
+            )}
+          </label>
           <InputField
             id="title"
             name="title"
