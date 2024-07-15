@@ -12,7 +12,7 @@ const ImageCard = ({ src, text, onClick }) => {
         width={1000}
         height={1000}
       />
-      <p className="absolute bottom-11 left-10 text-2xl text-yellow-500">
+      <p className="absolute bottom-11 [text-shadow:2px_2px_2px_var(--tw-shadow-color)] shadow-black left-10 text-2xl font-bold text-yellow-300">
         {text}
       </p>
     </div>

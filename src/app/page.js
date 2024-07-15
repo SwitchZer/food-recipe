@@ -68,12 +68,11 @@ const Home = async () => {
             <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
               <div className="flex flex-col px-5 my-auto max-md:max-w-full">
                 <div className="text-6xl max-md:max-w-full max-md:text-4xl">
-                  Healthy Bone Broth Ramen (Quick & Easy)
+                  Banana Toast (Quick & Easy)
                 </div>
                 <div className="shrink-0 mt-7 h-0.5 border-2 border-solid bg-stone-600 border-stone-600 max-md:max-w-full" />
                 <div className="mt-11 text-2xl tracking-wider leading-8 max-md:mt-10 max-md:max-w-full">
-                  Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen
-                  in a hurry? That’s right!
+                  Quick + Easy Banana Toast in a hurry? That’s right!
                 </div>
                 <div className="justify-center self-start px-14 py-7 mt-14 text-base tracking-wider text-white bg-yellow-400 rounded-lg max-md:px-5 max-md:mt-10">
                   Learn More
@@ -102,12 +101,11 @@ const Home = async () => {
             <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
               <div className="flex flex-col px-5 my-auto max-md:max-w-full">
                 <div className="text-6xl max-md:max-w-full max-md:text-4xl">
-                  Healthy Bone Broth Ramen (Quick & Easy)
+                  Delicious Chicken Burger
                 </div>
                 <div className="shrink-0 mt-7 h-0.5 border-2 border-solid bg-stone-600 border-stone-600 max-md:max-w-full" />
                 <div className="mt-11 text-2xl tracking-wider leading-8 max-md:mt-10 max-md:max-w-full">
-                  Quick + Easy Chicken Bone Broth Ramen- Healthy chicken ramen
-                  in a hurry? That’s right!
+                  Delicious Chicken Burger Easy To Make!
                 </div>
                 <div className="justify-center self-start px-14 py-7 mt-14 text-base tracking-wider text-white bg-yellow-400 rounded-lg max-md:px-5 max-md:mt-10">
                   Learn More
