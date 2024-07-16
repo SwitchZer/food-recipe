@@ -88,7 +88,7 @@ To run this project, you will need to add the following environment variables to
       <td>Saved Recipe</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/ProfilePage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/ProfilePage1.png" border="0" alt="" /></td>
       <td><img width="350px" src="./public/SaveRecipe.png" border="0" alt="" /></td>
    </tr>
 
