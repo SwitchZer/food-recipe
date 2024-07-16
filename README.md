@@ -64,7 +64,7 @@ To run this project, you will need to add the following environment variables to
       <td>Detail Recipe</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/LandingPage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/LandingPage1.png" border="0" alt="" /></td>
       <td><img width="350px" src="./public/DetailRecipePage.png" border="0" alt="" /></td>
    </tr>
    <tr>
