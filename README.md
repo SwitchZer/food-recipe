@@ -105,13 +105,3 @@ Feel Free to Contact me using [alfredcnzagoto@gmail.com](alfredcnzagoto@gmail.co
 ## Contributing
 
 Contributions are always welcome!
-
-## Related Project
-
-Project Related to this Project.
-
-[Peworld Backend](https://github.com/SwitchZer/hire-job-backend)
-
-[Peworld Mobile](https://github.com/SwitchZer/PeWorld-Mobile)
-
-[Blanja Web](https://github.com/SwitchZer/blanja-fe/tree/main)
