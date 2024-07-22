@@ -80,18 +80,25 @@ To run this project, you will need to add the following environment variables to
       <td>Search Recipe</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/AddRecipePage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/AddRecipe.png" border="0" alt="" /></td>
       <td><img width="350px" src="./public/RecipePage.png" border="0" alt="" /></td>
    </tr>
-    <tr>
+   <tr>
       <td>Profile</td>
       <td>Saved Recipe</td>
    </tr>
    <tr>
-      <td><img width="350px" src="./public/ProfilePage1.png" border="0" alt="" /></td>
-      <td><img width="350px" src="./public/SaveRecipe.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/ProfilePage.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/SavedRecipe.png" border="0" alt="" /></td>
    </tr>
-
+   <tr>
+      <td>Liked Recipe</td>
+      <td>Update Recipe</td>
+   </tr>
+   <tr>
+      <td><img width="350px" src="./public/LikedRecipe.png" border="0" alt="" /></td>
+      <td><img width="350px" src="./public/UpdateRecipe.png" border="0" alt="" /></td>
+   </tr>
 </table>
 
 ## License
