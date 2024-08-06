@@ -1,6 +1,6 @@
 # Mama Recipe
 
-Blanja is an online shop platform that facilitates buying and selling activities between users acting as shops and users acting as customers. On this platform, users acting as shops can sell their goods, while users acting as customers can search for and purchase available items.
+Food Recipe find your favorite recipes here and also share your own recipes by uploading recipes.
 
 ## Tech Stack
 
